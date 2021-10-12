@@ -1,17 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import faker from 'faker';
+import CommentDetail from './CommentDetail';
+import ApprovalCard from './ApprovalCard';
+const TestComp = () => {
+    return (
+        <h1>My name is Prashant !</h1>
+    );
+}
+const App = () => {
+    return (
+        <div>
+            <TestComp />
+            <div className="ui container comments">
+                <ApprovalCard >
+                    hi there !
+                    <CommentDetail author={faker.name.findName()} date={faker.date.recent().toLocaleDateString()} text={faker.lorem.text().substr(0, 30)} avatar={faker.image.avatar()} />
+                </ApprovalCard>
+                <ApprovalCard >
+                    <CommentDetail author={faker.name.findName()} date={faker.date.recent().toLocaleDateString()} text={faker.lorem.text().substr(0, 30)} avatar={faker.image.avatar()} />
+                </ApprovalCard>
+                <ApprovalCard >
+                    <CommentDetail author={faker.name.findName()} date={faker.date.recent().toLocaleDateString()} text={faker.lorem.text().substr(0, 30)} avatar={faker.image.avatar()} />
+                </ApprovalCard>
+                <ApprovalCard >
+                    <CommentDetail author={faker.name.findName()} date={faker.date.recent().toLocaleDateString()} text={faker.lorem.text().substr(0, 30)} avatar={faker.image.avatar()} />
+                </ApprovalCard>
+                <CommentDetail author={faker.name.findName()} date={faker.date.recent().toLocaleDateString()} text={faker.lorem.text().substr(0, 30)} avatar={faker.image.avatar()} />
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+            </div>
+        </div>
+    );
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(<App />, document.querySelector('#root'));
